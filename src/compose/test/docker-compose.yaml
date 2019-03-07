@@ -1,0 +1,6 @@
+version: '3'
+services:
+  web:
+    image: php7.2:1.0
+    env_file:
+      - web-variables.env

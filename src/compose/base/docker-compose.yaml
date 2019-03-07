@@ -1,0 +1,72 @@
+version: '3'
+services:
+  my_nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    links:
+      - my_fpm56:php56
+      - my_fpm72:php72
+    volumes:
+      - "/data/www:/data/www"
+      - "/mydata/docker/config/nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "/mydata/docker/config/nginx/uxin_web_config.conf:/etc/nginx/uxin_web_config.conf"
+      - "/mydata/docker/config/nginx/conf.d:/etc/nginx/conf.d"
+      - "/mydata/docker/var/log/nginx:/var/log/nginx"
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.2
+  my_fpm56:
+    image: php5.6:2.0
+    volumes:
+      - "/mydata/docker/config/php5.6/php.ini:/usr/local/etc/php/php.ini:ro"
+      - "/data/www:/data/www"
+      - "/data1:/data1"
+    networks:
+      default:
+      app_net:
+        ipv4_address: 172.16.238.3
+    extra_hosts:
+      - "local.foundation.youxinjinrong.com:172.16.238.2"
+  my_fpm72:
+    image: php7.2:2.0
+    volumes:
+      - "/mydata/docker/config/php7.2/php.ini:/usr/local/etc/php/php.ini:ro"
+      - "/data/www:/data/www"
+      - "/data1:/data1"
+    networks:
+      default:
+      app_net:
+        ipv4_address: 172.16.238.4
+  my_redis:
+    image: redis:3.2
+    ports:
+      - "6379:6379"
+    volumes:
+      - "/mydata/docker/data/redis/data:/data"
+    command: redis-server --appendonly yes
+  my_mysql:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - "/mydata/docker/data/mysql/conf:/etc/mysql/conf.d:ro"
+      - "/mydata/docker/data/mysql/logs:/logs"
+      - "/mydata/docker/data/mysql/data:/var/lib/mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+  my_mongo:
+    image: mongo:3.2
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/mydata/docker/data/mongo/db:/data/db"
+networks:
+  app_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24

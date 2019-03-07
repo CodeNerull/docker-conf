@@ -1,0 +1,1 @@
+docker build -t php5.6:1.0 .

@@ -1,0 +1,1 @@
+docker-compose -f /mydata/docker/compose/base/docker-compose_cli.yaml run --rm php56-cli php -r "echo __DIR__;"

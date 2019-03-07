@@ -1,0 +1,11 @@
+version: '2'
+
+options:
+  verbose: true
+syncs:
+  sync-foundation:
+    src: '/data/www/foundation.youxinjinrong.com'
+    #sync_strategy: 'unison' #not needed, this is the default now
+    # 同步时的用户ID，不指定的话为root
+    sync_userid: '1000'
+    sync_excludes: ['.git','.ieda']
