@@ -1,1 +1,1 @@
-docker build -t php7.2:1.0 .
+docker build -t php7.2:2.0 .

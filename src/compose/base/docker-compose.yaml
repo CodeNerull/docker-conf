@@ -9,17 +9,17 @@ services:
       - my_fpm72:php72
     volumes:
       - "/data/www:/data/www"
-      - "/mydata/docker/config/nginx/nginx.conf:/etc/nginx/nginx.conf"
-      - "/mydata/docker/config/nginx/uxin_web_config.conf:/etc/nginx/uxin_web_config.conf"
-      - "/mydata/docker/config/nginx/conf.d:/etc/nginx/conf.d"
-      - "/mydata/docker/var/log/nginx:/var/log/nginx"
+      - "../../config/nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "../../config/nginx/server/web_config.conf:/etc/nginx/server/web_config.conf"
+      - "../../config/nginx/conf.d:/etc/nginx/conf.d"
+      - "../../var/log/nginx:/var/log/nginx"
     networks:
       app_net:
         ipv4_address: 172.16.238.2
   my_fpm56:
     image: php5.6:2.0
     volumes:
-      - "/mydata/docker/config/php5.6/php.ini:/usr/local/etc/php/php.ini:ro"
+      - "../../config/php5.6/php.ini:/usr/local/etc/php/php.ini:ro"
       - "/data/www:/data/www"
       - "/data1:/data1"
     networks:
@@ -31,28 +31,30 @@ services:
   my_fpm72:
     image: php7.2:2.0
     volumes:
-      - "/mydata/docker/config/php7.2/php.ini:/usr/local/etc/php/php.ini:ro"
+      - "../../config/php7.2/php.ini:/usr/local/etc/php/php.ini:ro"
       - "/data/www:/data/www"
       - "/data1:/data1"
     networks:
       default:
       app_net:
         ipv4_address: 172.16.238.4
+    extra_hosts:
+      - "local.test2.com:172.16.238.2"
   my_redis:
     image: redis:3.2
     ports:
       - "6379:6379"
     volumes:
-      - "/mydata/docker/data/redis/data:/data"
+      - "../../data/redis/data:/data"
     command: redis-server --appendonly yes
   my_mysql:
     image: mysql:5.6
     ports:
       - "3306:3306"
     volumes:
-      - "/mydata/docker/data/mysql/conf:/etc/mysql/conf.d:ro"
-      - "/mydata/docker/data/mysql/logs:/logs"
-      - "/mydata/docker/data/mysql/data:/var/lib/mysql"
+      - "../../data/mysql/conf:/etc/mysql/conf.d:ro"
+      - "../../data/mysql/logs:/logs"
+      - "../../data/mysql/data:/var/lib/mysql"
     environment:
       - MYSQL_ROOT_PASSWORD=123456
   my_mongo:
@@ -60,7 +62,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - "/mydata/docker/data/mongo/db:/data/db"
+      - "../../data/mongo/db:/data/db"
 networks:
   app_net:
     driver: bridge
