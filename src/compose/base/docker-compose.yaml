@@ -27,7 +27,7 @@ services:
       app_net:
         ipv4_address: 172.16.238.3
     extra_hosts:
-      - "local.foundation.youxinjinrong.com:172.16.238.2"
+      - "local.test.com:172.16.238.2"
   my_fpm72:
     image: php7.2:2.0
     volumes:

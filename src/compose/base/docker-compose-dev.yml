@@ -1,13 +1,13 @@
 version: '3'
 
 volumes:
-  sync-foundation:
+  sync-test:
     external: true
 
 services:
   my_nginx:
     volumes:
-      - sync-foundation:/data/www/foundation.youxinjinrong.com
+      - sync-test:/data/www/test.com
   my_fpm56:
     volumes:
-      - sync-foundation:/data/www/foundation.youxinjinrong.com
+      - sync-test:/data/www/test.com
