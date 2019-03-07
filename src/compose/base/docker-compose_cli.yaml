@@ -5,11 +5,11 @@ services:
         image: php5.6:2.0
         volumes:
             - "$PWD:/var/www/html"
-            - "/mydata/docker/config/nginx/cron.conf:/usr/local/nginx/conf/cron.conf"
+            - "/data/github/docker-conf/src/config/nginx/server/cron.conf:/usr/local/nginx/conf/cron.conf"
             - "/data1:/data1"
     php72-cli:
-        image: php7.2:1.0
+        image: php7.2:2.0
         volumes:
             - "$PWD:/var/www/html"
-            - "/mydata/docker/config/nginx/cron.conf:/usr/local/nginx/conf/cron.conf"
+            - "/data/github/docker-conf/src/config/nginx/server/cron.conf:/usr/local/nginx/conf/cron.conf"
             - "/data1:/data1"
