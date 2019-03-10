@@ -1,3 +1,4 @@
 .docker-sync
-sync/docker-sync-work.yml
-base/docker-compose-work.yml
+sync/*-work.yaml
+base/*-work.sh
+base/*-work.yaml
