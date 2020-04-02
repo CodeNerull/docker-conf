@@ -51,7 +51,7 @@ do
             echo "${ITEM_FILE_NAME}文件已存在。"
         else
             echo "正在下载 ${ITEM_FILE_NAME} ..."
-            wget "https://pecl.php.net/get/grpc-${GRPC_VERSION}.tgz" -O ${ITEM_FILE_NAME}
+            wget "https://pecl.php.net/get/${ITEM_EXT_LOWER}-${ITEM_EXT_VERSION_NAME}.tgz" -O ${ITEM_FILE_NAME}
         fi
     fi
 done
