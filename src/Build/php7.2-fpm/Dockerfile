@@ -27,7 +27,7 @@ RUN apt-get install -y --no-install-recommends \
     && pecl install  \
         /home/ext/redis-4.0.2.tgz \
         /home/ext/mongodb-1.5.2.tgz \
-        /home/ext/swoole-2.2.0.tgz \
+        /home/ext/swoole-4.3.0.tgz \
     && docker-php-ext-enable redis mongodb swoole \
     #&& apt-get remove -y --auto-remove curl make gcc \
     && apt-get clean \
