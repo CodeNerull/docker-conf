@@ -6,3 +6,5 @@
 ### 开启php服务
 
 `docker-compose -f docker-compose-base.yaml -f docker-compose-php.yaml -f docker-compose-sync.yaml up -d`
+
+`docker-compose -f docker-compose-base.yaml -f docker-compose-php.yaml up -d`

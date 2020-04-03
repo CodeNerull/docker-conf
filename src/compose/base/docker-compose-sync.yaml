@@ -9,11 +9,11 @@ volumes:
 services:
   my_nginx:
     volumes:
-      - sync-test:/data/www/test.com
-      - sync-test2:/data/www/test2.com
+      - sync-test:~/data/www/test.com
+      - sync-test2:~/data/www/test2.com
   my_fpm56:
     volumes:
-      - sync-test:/data/www/test.com
+      - sync-test:~/data/www/test.com
   my_fpm72:
     volumes:
-      - sync-test2:/data/www/test2.com
+      - sync-test2:~/data/www/test2.com
