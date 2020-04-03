@@ -3,10 +3,10 @@
 GRPC_VERSION=1.14.1 #grpc
 MONGODB_VERSION=1.5.2 #mongodb
 REDIS_VERSION=4.0.2 #redis
-SWOOLE_VERSION=2.2.0 #swoole
+SWOOLE_VERSION=4.3.0 #swoole
 XDEBUG_VERSION=2.5.5 #xdebug
 
-EXT_LIST=('GRPC' 'INTL' "REDIS" 'SWOOLE' 'XDEBUG')
+EXT_LIST=('GRPC' 'INTL' "REDIS" 'SWOOLE' 'XDEBUG' "MONGODB")
 
 EXT_FOLDER=./ext
 
@@ -50,7 +50,7 @@ do
             echo "${ITEM_FILE_NAME}文件已存在。"
         else
             echo "正在下载 ${ITEM_FILE_NAME} ..."
-            wget "https://pecl.php.net/get/grpc-${GRPC_VERSION}.tgz" -O ${ITEM_FILE_NAME}
+            wget "https://pecl.php.net/get/${ITEM_EXT_LOWER}-${ITEM_EXT_VERSION_NAME}.tgz" -O ${ITEM_FILE_NAME}
         fi
     fi
 done
