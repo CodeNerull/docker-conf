@@ -7,3 +7,6 @@ services:
     volumes:
       - "../../data/redis/data:/data"
     command: redis-server --appendonly yes
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.11
